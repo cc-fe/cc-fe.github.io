@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>一个div绘画</title>
+	<style type="text/css">
+
+	/*linear-gradient渐变*/
+	/*background:linear-gradient(0deg/to bottom,#ccc 50%,#fff 30%);百分比或长度定位起止色位置*/
+	div{
+		width: 247px;
+		height: 40px;
+		margin: 0 auto;
+		background-color: #237449;
+		border-radius: 4px;
+		box-shadow: 2px 3px 3px rgba(0,0,0,.3);
+		background-image: 
+        /*底色*/
+		linear-gradient(to bottom,transparent 62%,rgba(0,0,0,.3) 100%),
+		/*两边四个竖条10px*/
+		linear-gradient(90deg, transparent 25px,rgba(0,0,0,.6) 25px,rgba(0,0,0,.6) 30px,transparent 30px,transparent 35px,rgba(0,0,0,.6) 35px,rgba(0,0,0,.6) 40px,transparent 40px,transparent 210px,rgba(0,0,0,.6) 210px,rgba(0,0,0,.6) 215px,transparent 215px,transparent 220px,rgba(0,0,0,.6) 220px,rgba(0,0,0,.6) 225px,transparent 225px),
+		/*顶部开始的椭圆*/
+		radial-gradient(ellipse at top,rgba(0,0,0,.6) 50px,transparent 54px),
+        /*上一层淡绿色*/
+		linear-gradient(to right,transparent 12px,rgba(41,237,133,.6) 12px,rgba(41,237,133,.6) 235px,transparent 235px);
+	}
+	/*一层一层透明底下的颜色会越来越淡,因为被遮罩了*/
+	/*笔头*/
+	/*在 CSS3 中为了区别伪元素和伪类为伪元素使用了双冒号*/
+	div::before{
+		content: " ";
+		height: 13px;
+		width: 0px;
+        display: block;
+        position: relative;
+        left: -38px;
+        top: 3px;
+		border-right: 38px solid #237449;
+		border-top: 10px solid transparent;
+		border-bottom: 10px solid transparent;
+	}
+	/*反光效果*/
+	 div:after{
+/*
+		content: 'green        ';
+	    font-family: Arial, sans-serif;
+	    font-size: 12px;
+	    font-weight: bold;
+		text-align: right;
+		padding-right: 47px;
+		padding-top: 17px;
+		color:rgba(0,0,0,.4);
+*/
+		content: "";
+		display: block;
+		height: 40px;
+		width: 284px;
+		position: relative;
+		top: -33px;
+		left: -37px;
+		background-image: linear-gradient(to bottom,rgba(225,225,225,0) 12px,rgba(225,225,225,.2) 17px,rgba(225,225,225,.2) 19px,rgba(225,225,225,0) 24px);
+	} 
+	</style>
+</head>
+<body>
+	<div></div>
+	<!-- 一个div有 div:before,div:after共三个元素 -->
+</body>
+</html>
